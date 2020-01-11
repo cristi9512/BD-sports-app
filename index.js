@@ -3,6 +3,8 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require("body-parser");
+const { uniqueNamesGenerator, adjectives, colors, animals, names } = require('unique-names-generator');
+
 
 const app = express();
 let db = null;
@@ -103,6 +105,16 @@ app
 					bottomRight: borderPoints[7]
 				}
 			}))
+	  })
+	.post('/newUser', (req, res) => {
+		if (req.body.loginCode.length === 6) {
+			const randomName = uniqueNamesGenerator({ dictionaries: [adjectives, colors, names] });
+			res.send(JSON.stringify({userName: randomName}));
+
+		} else {
+			res.status(500).send({error: "The login code should be a 6 chars string!"});
+		}
+
 	  })
 	.post('/userPosition', (req, res) => {
 		const collection = db.collection("positions");
