@@ -118,7 +118,7 @@ app
 						orange: 0,
 					}
 					result.forEach((point, index) => {
-						console.log('here ' + point.xPosition + " - " + point.yPosition);
+						//console.log('here ' + point.xPosition + " - " + point.yPosition);
 						if (point.xPosition >= borderPoints[0].x - 0.001 && point.xPosition <= borderPoints[3].x + 0.0001
 							&& point.yPosition <= borderPoints[0].y + 0.001 && point.yPosition <= borderPoints[3].y + 0.001
 							&& point.xPosition >= borderPoints[1].x - 0.001 && point.xPosition <= borderPoints[2].x + 0.0001
@@ -128,13 +128,14 @@ app
 							&& point.yPosition <= borderPoints[3].y + 0.001 && point.yPosition <= borderPoints[4].y + 0.001
 							&& point.xPosition >= borderPoints[2].x - 0.001 && point.xPosition <= borderPoints[5].x + 0.001
 							&& point.yPosition >= borderPoints[2].y - 0.0001 && point.yPosition >= borderPoints[5].y - 0.0001) {
+							console.log(point);
 							stadium.yellow = stadium.yellow + 1;
 						} else if(point.xPosition >= borderPoints[1].x - 0.001 && point.xPosition <= borderPoints[5].x + 0.001
 							&& point.yPosition <= borderPoints[1].y + 0.001 && point.yPosition <= borderPoints[5].y + 0.001
 							&& point.xPosition >= borderPoints[6].x - 0.001 && point.xPosition <= borderPoints[7].x + 0.001
 							&& point.yPosition >= borderPoints[6].y - 0.001 && point.yPosition >= borderPoints[7].y - 0.001) {
 							stadium.orange = stadium.orange + 1;
-							console.log(point)
+							//console.log(point)
 						}
 					});
 				    res.send(JSON.stringify(stadium));
